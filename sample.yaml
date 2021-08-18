@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: spring-helloworld
-        image: 17hema/simple-spring:4
+        image: 17hema/simple-spring
         imagePullPolicy: Always
         ports:
         - containerPort: 80
