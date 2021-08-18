@@ -4,26 +4,27 @@ pipeline {
   }
   agent any
   stages {
-    stage(‘Build’) {
+    stage(‘code complile’) {
       steps{
         script {
           sh 'mvn clean install'
         }
       }
     }
-    stage(‘Load’) {
+    stage(‘Build image’) {
       steps{
         script {
-          app = docker.build("17hema/simple-spring")
+          app = docker.build("17hema/simple-spring:${env.BUILD_ID}")
         }
       }
     }
-     stage(‘Deploy’) {
+     stage(‘Push image’) {
       steps{
         script {
           docker.withRegistry( "https://registry.hub.docker.com", registryCredential ) {
            // dockerImage.push()
           app.push("latest")
+          myapp.push("${env.BUILD_ID}")
           }
         }
       }
@@ -41,4 +42,3 @@ pipeline {
   }
   }
 }
-
