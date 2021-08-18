@@ -4,7 +4,7 @@ pipeline {
   }
   agent any
   stages {
-    stage(‘code complile’) {
+    stage(‘Code complile’) {
       steps{
         script {
           sh 'mvn clean install'
