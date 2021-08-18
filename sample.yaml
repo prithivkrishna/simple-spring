@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring-helloworld
+  name: spring-helloworlds
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: spring-helloworld
+      app: spring-helloworlds
   template:
     metadata:
       labels:
-        app: spring-helloworld
+        app: spring-helloworlds
     spec:
       containers:
-      - name: spring-helloworld
+      - name: spring-helloworlds
         image: 17hema/simple-spring:latest
         imagePullPolicy: Always
         ports:
