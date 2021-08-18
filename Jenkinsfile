@@ -42,7 +42,7 @@ pipeline {
     }
         stage('Deploy to GKE test cluster') {
             steps{
-                sh "sed -i 's/17hema/simple-spring:${env.BUILD_ID}/g' sample.yaml"
+                sh "sed -i 's/17hema/simple-spring/g' sample.yaml"
                 step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'sample.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
             }
         }
