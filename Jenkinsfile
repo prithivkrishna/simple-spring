@@ -4,21 +4,28 @@ pipeline {
   }
   agent any
   stages {
-    stage(‘Code’) {
+    
+    stage('Checkout Source') {
+      steps {
+        git url:'https://github.com/hema1795/simple-spring.git', branch:'master'
+      }
+    }
+    
+    stage('Code') {
       steps{
         script {
           sh 'mvn clean install'
         }
       }
     }
-    stage(‘Build image’) {
+    stage('Build image') {
       steps{
         script {
           app = docker.build("17hema/simple-spring:${env.BUILD_ID}")
         }
       }
     }
-     stage(‘Push image’) {
+     stage('Push image') {
       steps{
         script {
           docker.withRegistry( "https://registry.hub.docker.com", registryCredential ) {
