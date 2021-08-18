@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registryCredential = "docker"
+    registryCredential = "17hema"
   }
   agent any
   stages {
@@ -14,7 +14,7 @@ pipeline {
     stage(‘Load’) {
       steps{
         script {
-          app = docker.build("achyuth007/simple-spring")
+          app = docker.build("17hema/simple-spring")
         }
       }
     }
@@ -41,3 +41,4 @@ pipeline {
   }
   }
 }
+
