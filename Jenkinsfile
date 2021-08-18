@@ -31,7 +31,7 @@ pipeline {
           docker.withRegistry( "https://registry.hub.docker.com", registryCredential ) {
            // dockerImage.push()
           app.push("latest")
-          myapp.push("${env.BUILD_ID}")
+          app.push("${env.BUILD_ID}")
           }
         }
       }
