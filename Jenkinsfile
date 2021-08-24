@@ -5,7 +5,7 @@ pipeline {
     CLUSTER_NAME = 'jenkins'
     LOCATION = 'us-central1-c'
     CREDENTIALS_ID = 'handy-hexagon-318203'
-    imageName = "myphpapp"
+    imageName = "springapp"
     registryCredentials = "nexus"
     registry = "http://34.125.88.60:8085/"
     dockerImage = ''
