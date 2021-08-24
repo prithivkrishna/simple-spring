@@ -5,6 +5,10 @@ pipeline {
     CLUSTER_NAME = 'jenkins'
     LOCATION = 'us-central1-c'
     CREDENTIALS_ID = 'handy-hexagon-318203'
+    imageName = "myphpapp"
+    registryCredentials = "nexus"
+    registry = "http://34.125.88.60:8085/"
+    dockerImage = ''
   }
   agent any
   stages {
@@ -25,17 +29,16 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-          app = docker.build("17hema/simple-spring:${env.BUILD_ID}")
+           dockerImage = docker.build imageName
         }
       }
     }
+    
      stage('Push image') {
       steps{
         script {
-          docker.withRegistry( "https://registry.hub.docker.com", registryCredential ) {
-           // dockerImage.push()
-          app.push("latest")
-          app.push("${env.BUILD_ID}")
+             docker.withRegistry( 'http://'+registry, registryCredentials ) {
+             dockerImage.push('latest')
           }
         }
       }
