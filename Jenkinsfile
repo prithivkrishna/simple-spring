@@ -37,7 +37,9 @@ pipeline {
      stage('Push image') {
       steps{
         script {
-             docker.withRegistry( 'http://'+registry, registryCredentials ) {
+             docker login docker login -u admin --password-stdin
+             docker.withRegistry( 'http://'+registry, registryCredentials )
+          {
              dockerImage.push('latest')
           }
         }
