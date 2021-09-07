@@ -7,7 +7,7 @@ pipeline {
     CREDENTIALS_ID = 'handy-hexagon-318203'
     imageName = "springapp"
     registryCredentials = "nexus"
-    registry = "https://jokersquotes.com"
+    registry = "jokersquotes.com"
     dockerImage = ''
   }
   agent any
