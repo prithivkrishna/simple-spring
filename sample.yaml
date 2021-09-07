@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: springapp
-        image: jokersquotes.com/docker-registry/springapp
+        image: jokersquotes.com/docker-registry/springapp:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
