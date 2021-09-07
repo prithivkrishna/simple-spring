@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: spring-helloworlds
-        image: 17hema/simple-spring:latest
+        image: jokersquotes.com/docker-registry/springapp
         imagePullPolicy: Always
         ports:
         - containerPort: 80
