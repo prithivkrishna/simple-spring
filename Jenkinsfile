@@ -7,7 +7,7 @@ pipeline {
     CREDENTIALS_ID = 'handy-hexagon-318203'
     imageName = "springapp"
     registryCredentials = "nexus"
-    registry = "https://jokersquotes.com/repository/docker-registry/"
+    registry = "https://jokersquotes.com"
     dockerImage = ''
   }
   agent any
@@ -37,7 +37,7 @@ pipeline {
      stage('Push image') {
       steps{
         script {
-             docker.withRegistry( 'http://'+registry, registryCredentials )
+             docker.withRegistry( 'https://'+registry, registryCredentials )
           {
              dockerImage.push('latest')
           }
