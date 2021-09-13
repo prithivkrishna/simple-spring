@@ -67,7 +67,7 @@ pipeline {
                 sh '''
                 PACKAGE=spring-boot-helm-chart
                 helm repo add nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
-                helm install --name ${PACKAGE} nexusrepos/${PACKAGE}
+                helm install ${PACKAGE} nexusrepos/${PACKAGE}
                 '''
                 step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, credentialsId: env.CREDENTIALS_ID])
             }
