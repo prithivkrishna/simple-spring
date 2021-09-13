@@ -51,12 +51,12 @@ pipeline {
           git url: 'https://github.com/hema1795/simple-spring.git', branch: 'master'
         script{
           sh '''
-          PACKAGE=springboot-demoweb
+          PACKAGE=spring-boot-helm-chart
           helm repo add nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
-          cd springboot-demoweb
+          cd spring-boot-helm-chart
           cat Chart.yaml
           helm package .
-          curl -u admin:admin https://jokersquotes.com/repository/hosted-hosted/ --upload-file springboot-demoweb-0.1.0.tgz -v
+          curl -u admin:admin https://jokersquotes.com/repository/hosted-hosted/ --upload-file spring-boot-helm-chart-0.1.0.tgz -v
           '''
         }
       }
