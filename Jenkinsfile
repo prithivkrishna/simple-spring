@@ -56,7 +56,7 @@ pipeline {
           cd spring-boot-helm-chart
           cat Chart.yaml
           helm package .
-          curl -u admin:admin https://jokersquotes.com/repository/hosted-hosted/ --upload-file springboot-0.3.0.tgz -v
+          curl -u admin:admin https://jokersquotes.com/repository/hosted-hosted/ --upload-file ${PACKAGE}-*.tgz -v
           '''
         }
       }
