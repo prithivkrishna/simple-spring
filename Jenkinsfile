@@ -55,7 +55,7 @@ pipeline {
           helm repo add nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
           cd springboot-demoweb
           helm package .
-          helm nexus-push nexusrepo --force ${PACKAGE}-*.tgz https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
+          helm push --username=admin --password=admin --force ${PACKAGE}-*.tg  --context-path=/repository/hosted-hosted/ nexus
           '''
         }
       }
