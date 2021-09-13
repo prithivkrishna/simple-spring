@@ -55,7 +55,7 @@ pipeline {
           helm repo add nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
           cd springboot-demoweb
           helm package .
-          curl -v -F file=@springboot-demoweb-0.1.0.tgz -u admin:admin http://+registry, registryCredentials
+          curl -v -F file=@chart.tgz -u admin:admin https://jokersquotes.com//service/rest/v1/components?repository==hosted-hosted
           '''
         }
       }
