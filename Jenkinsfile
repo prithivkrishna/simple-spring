@@ -56,7 +56,7 @@ pipeline {
           cd springboot-demoweb
           cat Chart.yaml
           helm package .
-          helm push springboot-demoweb nexusrepos
+          helm push springboot-demoweb https://my.chart.repo.com 
           '''
         }
       }
