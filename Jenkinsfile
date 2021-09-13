@@ -56,7 +56,7 @@ pipeline {
           cd springboot-demoweb
           cat Chart.yaml
           helm package .
-          helm push springboot-demoweb https://my.chart.repo.com 
+          curl -u admin:admin http://jokersquotes.com:8081/repository/hosted-hosted/ --upload-file springboot-demoweb-0.1.0.tgz -v
           '''
         }
       }
