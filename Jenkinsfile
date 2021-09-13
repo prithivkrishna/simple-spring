@@ -47,7 +47,9 @@ pipeline {
     
     stage('helm build')
     {
-      git url: 'https://github.com/hema1795/simple-spring.git', branch: 'master'
+      steps{
+          git url: 'https://github.com/hema1795/simple-spring.git', branch: 'master'
+        script{
           sh '''
           PACKAGE=springboot-demoweb
           helm repo add nexusrepo https://jokersquotes.com/repository/helm-proxy/ --username admin --password admin
@@ -55,8 +57,9 @@ pipeline {
           helm package .
           helm push --force ${PACKAGE}-*.tgz my-charts
           '''
+        }
+      }
     }
-    
         stage('Deploy to GKE test cluster') {
             steps{
                 sh "sed -i 's/springapp:latest/springapp/g' sample.yaml"
