@@ -55,7 +55,7 @@ pipeline {
           helm repo add nexusrepo https://jokersquotes.com/repository/helm-proxy/ --username admin --password admin
           cd springboot-demoweb
           helm package .
-          helm push --force ${PACKAGE}-*.tgz my-charts
+          helm push --force ${PACKAGE}-*.tgz https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
           '''
         }
       }
