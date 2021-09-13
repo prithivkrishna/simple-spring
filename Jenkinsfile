@@ -63,8 +63,13 @@ pipeline {
     }
         stage('Deploy to GKE test cluster') {
             steps{
-                sh "sed -i 's/springapp:latest/springapp/g' sample.yaml"
-                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'sample.yaml', credentialsId: env.CREDENTIALS_ID])
+              script{
+                sh '''
+                PACKAGE=spring-boot-helm-chart
+                helm repo add nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
+                helm install --name ${PACKAGE} nexusrepos/${PACKAGE}
+                '''
+                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, credentialsId: env.CREDENTIALS_ID])
             }
         }
   }
