@@ -52,10 +52,10 @@ pipeline {
         script{
           sh '''
           PACKAGE=springboot-demoweb
-          helm repo add nexusrepo https://jokersquotes.com/repository/helm-proxy/ --username admin --password admin
+          helm repo add nexusrepo https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
           cd springboot-demoweb
           helm package .
-          helm push --force ${PACKAGE}-*.tgz https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
+          helm nexusrepo push --force ${PACKAGE}-*.tgz https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
           '''
         }
       }
