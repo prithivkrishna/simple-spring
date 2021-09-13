@@ -54,7 +54,7 @@ pipeline {
           PACKAGE=springboot-demoweb
           helm repo add nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
           cd springboot-demoweb
-          cat springboot-demoweb/Chart.yaml
+          cat Chart.yaml
           helm package .
           helm push --username=admin --password=admin --force ${PACKAGE}-*.tg  --context-path=/repository/hosted-hosted/ nexus
           '''
