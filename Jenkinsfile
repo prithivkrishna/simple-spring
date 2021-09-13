@@ -53,6 +53,7 @@ pipeline {
           sh '''
           PACKAGE=springboot-demoweb
           helm repo add nexusrepo https://jokersquotes.com/repository/helm-proxy/ --username admin --password admin
+          cd ./${PACKAGE}
           helm package .
           helm push --force ${PACKAGE}-*.tgz my-charts
           '''
