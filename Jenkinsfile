@@ -63,6 +63,7 @@ pipeline {
     }
         stage('Deploy to GKE test cluster') {
             steps{
+              git url: 'https://github.com/hema1795/simple-spring.git', branch: 'master'
               script{
                 sh '''
                 PACKAGE=spring-boot-helm-chart
