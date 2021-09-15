@@ -2,9 +2,9 @@ pipeline {
   environment {
     //registryCredential = "17hema"
     PROJECT_ID = 'handy-hexagon-318203'
-    CLUSTER_NAME = 'jenkins'
+    CLUSTER_NAME = 'testing'
     LOCATION = 'us-central1-c'
-    CREDENTIALS_ID = 'handy-hexagon-318203'
+    CREDENTIALS_ID = 'My First Project'
     imageName = "springapp"
     registryCredentials = "nexus"
     registry = "jokersquotes.com"
