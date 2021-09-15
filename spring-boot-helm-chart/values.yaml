@@ -2,7 +2,7 @@ replicaCount: 1
 
 # In our pipeline the image is set after the validation, without this placeholder the validation would fail
 image:
-  name: placeholder
+  name: springapp
   pullPolicy: IfNotPresent
 
 nameOverride: ""
