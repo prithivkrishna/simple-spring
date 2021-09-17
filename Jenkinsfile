@@ -71,6 +71,7 @@ pipeline {
                helm repo add nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
                cd sample-chart
                helm repo update
+               PACKAGE=nexusrepos/my-release
                helm install my-release -f values.yaml ${PACKAGE}
                 '''
              step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, credentialsId: env.CREDENTIALS_ID])
