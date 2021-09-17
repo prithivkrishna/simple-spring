@@ -69,7 +69,7 @@ pipeline {
                 PACKAGE=spring-boot-helm-chart
                 helm repo add nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
                 helm repo update
-                helm install --name ${PACKAGE} nexusrepos/${PACKAGE} --version 0.3.0
+                helm install --name ${PACKAGE} nexusrepos/${PACKAGE} -values values.yaml --version 0.3.0
                 step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, kubeconfigID: mykubeconfigure, manifestPattern: 'k8s/jenkins-deploy/', credentialsId: env.CREDENTIALS_ID])
                 '''
             }
