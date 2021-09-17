@@ -68,7 +68,7 @@ pipeline {
               script{
               sh '''
               PACKAGE=spring-boot-helm-chart
-              release = "${release}"
+              release = "${release}-${namespace}"
                helm repo add helm nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
                helm repo update
                 helm upgrade --install --namespace ${release} \
