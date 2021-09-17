@@ -2,11 +2,11 @@ pipeline {
   environment {
     //registryCredential = "17hema"
     PROJECT_ID = 'handy-hexagon-318203'
-    CLUSTER_NAME = 'testing'
+    CLUSTER_NAME = 'jenkins-deploy'
     LOCATION = 'us-central1-c'
-    CREDENTIALS_ID = 'My First Project'
+    CREDENTIALS_ID = 'handy-hexagon-318203'
     imageName = "springapp"
-    registryCredentials = "nexus"
+    registryCredentials = "nexus-artifactory"
     registry = "jokersquotes.com"
     dockerImage = ''
   }
