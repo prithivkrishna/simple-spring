@@ -54,7 +54,7 @@ pipeline {
           sh '''
           PACKAGE=sample-chart
           helm repo add nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
-          cd spring-boot-helm-chart
+          cd sample-chart
           cat Chart.yaml
           helm package .
           curl -u admin:admin https://jokersquotes.com/repository/hosted-hosted/ --upload-file ${PACKAGE}-*.tgz -v
