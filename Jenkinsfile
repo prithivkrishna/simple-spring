@@ -1,8 +1,8 @@
 pipeline {
   environment {
-    //registryCredential = "17hema"
+    registryCredential = "17hema"
     PROJECT_ID = 'handy-hexagon-318203'
-    CLUSTER_NAME = 'jenkins'
+    CLUSTER_NAME = 'jenkins-deploy'
     LOCATION = 'us-central1-c'
     CREDENTIALS_ID = 'handy-hexagon-318203'
     imageName = "springapp"
@@ -69,7 +69,7 @@ pipeline {
                 PACKAGE=spring-boot-helm-chart
                 helm repo add nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
                 helm repo update
-                helm install ${PACKAGE} nexusrepos/${PACKAGE}
+                helm install --name ${PACKAGE} nexusrepos/${PACKAGE} --version 0.3.0
                 step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, kubeconfigID: mykubeconfigure, manifestPattern: 'k8s/jenkins-deploy/', credentialsId: env.CREDENTIALS_ID])
                 '''
             }
