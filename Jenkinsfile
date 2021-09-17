@@ -71,7 +71,7 @@ pipeline {
                helm repo add nexusrepoe https://charts.helm.sh/stable
                cd sample-chart
                helm repo update
-               PACKAGE=nexusrepos/sample-chart
+               PACKAGE=nexusrepoe/sample-chart
                helm repo update
                helm install my-release -f values.yaml ${PACKAGE}
                 '''
