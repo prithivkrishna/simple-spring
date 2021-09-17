@@ -53,7 +53,7 @@ pipeline {
         script{
           sh '''
           PACKAGE=sample-chart
-          helm repo add nexusrepoe https://charts.helm.sh/stable
+          helm repo add stable https://charts.helm.sh/stable
           cd sample-chart
           cat Chart.yaml
           helm package .
@@ -68,10 +68,10 @@ pipeline {
               script{
               sh '''
                PACKAGE=sample-chart
-               helm repo add nexusrepoe https://charts.helm.sh/stable
+               helm repo add stable https://charts.helm.sh/stable
                cd sample-chart
                helm repo update
-               PACKAGE=nexusrepoe/sample-chart
+               PACKAGE=stable/sample-chart
                helm repo update
                helm install my-release -f values.yaml ${PACKAGE}
                 '''
