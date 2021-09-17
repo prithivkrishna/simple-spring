@@ -70,7 +70,7 @@ pipeline {
                PACKAGE=sample-chart
                helm repo add nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
                helm repo update
-               helm install my-release -f values.yaml --verify ${PACKAGE}/sample-chart-0.1.0.tgz
+               helm install my-release -f values.yaml ${PACKAGE}
                 '''
              step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, credentialsId: env.CREDENTIALS_ID])
             }
