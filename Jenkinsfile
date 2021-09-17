@@ -52,7 +52,7 @@ pipeline {
           git url: 'https://github.com/hema1795/simple-spring.git', branch: 'master'
         script{
           sh '''
-          PACKAGE=spring-boot-helm-chart
+          PACKAGE=sample-chart
           helm repo add nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
           cd spring-boot-helm-chart
           cat Chart.yaml
@@ -67,10 +67,10 @@ pipeline {
               git url: 'https://github.com/hema1795/simple-spring.git', branch: 'master'
               script{
               sh '''
-               PACKAGE=spring-boot-helm-chart
+               PACKAGE=sample-chart
                helm repo add nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
                helm repo update
-               helm install --name my-release -f values.yaml --verify ${PACKAGE}/spring-boot-helm-chart-0.3.0.tgz
+               helm install my-release -f values.yaml --verify ${PACKAGE}/sample-chart-0.1.0.tgz
                 '''
              step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, credentialsId: env.CREDENTIALS_ID])
             }
