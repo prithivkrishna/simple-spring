@@ -29,7 +29,7 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-           dockerImage = docker.build imageName
+           dockerImage = docker.build ("https://jokersquotes.com/repository/docker-registry:${env.BUILD_ID}")
         }
       }
     }
@@ -40,6 +40,7 @@ pipeline {
              docker.withRegistry( 'http://'+registry, registryCredentials )
           {
              dockerImage.push('latest')
+             app.push("${env.BUILD_ID}")
           }
         }
       }
