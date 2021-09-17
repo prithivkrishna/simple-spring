@@ -66,9 +66,9 @@ pipeline {
             steps{
               git url: 'https://github.com/hema1795/simple-spring.git', branch: 'master'
               script{
-              PACKAGE=spring-boot-helm-chart
-              step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: '${PACKAGE}/values.yaml', credentialsId: env.CREDENTIALS_ID])
+              step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, credentialsId: env.CREDENTIALS_ID])
               sh '''
+               PACKAGE=spring-boot-helm-chart
                helm repo add nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
                helm repo update
                helm upgrade --install --namespace default/
