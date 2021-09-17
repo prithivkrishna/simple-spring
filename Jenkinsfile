@@ -66,7 +66,7 @@ pipeline {
             steps{
               git url: 'https://github.com/hema1795/simple-spring.git', branch: 'master'
               script{
-              PACKAGE= spring-boot-helm-chart
+              PACKAGE = spring-boot-helm-chart
               release = "${release}"
               sh "helm repo add helm nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin; helm repo update"
               sh """
