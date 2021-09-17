@@ -66,10 +66,11 @@ pipeline {
             steps{
               git url: 'https://github.com/hema1795/simple-spring.git', branch: 'master'
               script{
+              sh '''
               PACKAGE = spring-boot-helm-chart
               release = "${release}"
-              sh "helm repo add helm nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin; helm repo update"
-              sh '''
+               helm repo add helm nexusrepos https://jokersquotes.com/repository/hosted-hosted/ --username admin --password admin
+               helm repo update
                 helm upgrade --install --namespace ${release} \
                 --set image.repository=https://jokersquotes.com/repository/docker-registry/simple-spring:${env.BUILD_ID} nexusrepos/${PACKAGE}
                 step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, kubeconfigID: mykubeconfigure, manifestPattern: 'k8s/jenkins-deploy/', credentialsId: env.CREDENTIALS_ID])
