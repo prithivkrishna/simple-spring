@@ -40,7 +40,7 @@ pipeline {
              docker.withRegistry( 'http://'+registry, registryCredentials )
           {
              dockerImage.push('latest')
-             app.push("${env.BUILD_ID}")
+             dockerImage.push("${env.BUILD_ID}")
           }
         }
       }
